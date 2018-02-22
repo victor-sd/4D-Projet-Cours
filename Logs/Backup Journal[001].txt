@@ -1,0 +1,11 @@
+*** Full Backup
+Creating archive : F:\4D app\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4dbase\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet[0001].4BK
+Creating log backup : F:\4D app\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4dbase\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet[0000].4BL
+Attachment(s): 
+	F:\4D app\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4dbase\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4DSyncHeader [NOT FOUND]
+	F:\4D app\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4dbase\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4DSyncData [NOT FOUND]
+	F:\4D app\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4dbase\Victor_Savary-Derelle_Thibaut_Delplanque_4D_projet.4DIndx [OK]
+Scheduled 00/00/0 00:00
+Starting 01/02/2018 12:00
+Ending 01/02/2018 12:00
+
