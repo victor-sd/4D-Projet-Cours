@@ -21,20 +21,62 @@
     <![endif]-->
   </head>
   <body>
-  <div class="container">
-  
-  <!--#4DINCLUDE includes/navbar.shtml-->
-  	<div class="row">
-  		<div class="col-md-12" role="main">
-    			<h1>Contenu du projet</h1>
-					<!--#4DTEXT [Projet]nom-->
-		</div>
-	</div>
-   </div>
+    <section>
+      <article>
+        <div class="container">
+        <!--#4DINCLUDE includes/navbar.shtml-->
+        	<div class="row">
+        		   <div class="col-md-12" role="main">
+          			    <h1>Contenu du projet : </h1>
+      					         <h4>nom : <!--#4DTEXT [Projet]nom--></h4>
+      	       </div>
+      	   </div>
+           <div class="row">
+         		   <div class="col-md-12" role="main">
+                 <h4>Description du projet : <!--#4DTEXT [Projet]description--></h4>
+       	       </div>
+       	   </div>
+           <div class="row">
+                <div class="col-md-12" role="main">
+                 <h4>nom du Responsable : <!--#4DTEXT [Utilisateur]nom--></h4>
+                </div>
+            </div>
+           <div class="row">
+         		   <div class="col-md-12" role="main">
+                 <h4>nom du client : <!--#4DTEXT [Client]nom --></h4>
+       	       </div>
+       	   </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+           <div class="row">
+         		   <div class="col-md-12" role="main">
+                 <h3>Liste des taches :</h3>
+
+           			   <table class="table table-bordered">
+       				          <!--#4DLOOP [Tache]-->
+           					        <tr>
+
+                              <td>
+                                <!--#4DTEXT [Tache]titre-->
+                              </td>
+                              <td>
+                                <!--#4DSCRIPT/getUserbyTask-->
+                                <!--#4DTEXT [Utilisateur]nom--> <!--#4DTEXT [Utilisateur]prenom-->
+                              </td>
+                            </tr>
+       				         <!--#4DENDLOOP [Tache]-->
+           		   </table>
+       	       </div>
+       	   </div>
+
+         </div>
+
+
+
+       </article>
+     </section>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -22,7 +22,7 @@
   </head>
   <body>
   <div class="container">
-  
+
   <!--#4DINCLUDE includes/navbar.shtml-->
   	<div class="row">
   		<div class="col-md-12" role="main">
@@ -37,7 +37,6 @@
     					</td></tr>
 				<!--#4DENDLOOP [Projet]-->
     			</table>
-
 
 		</div>
 	</div>
