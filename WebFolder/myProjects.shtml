@@ -26,6 +26,10 @@
   <!--#4DINCLUDE includes/navbar.shtml-->
   	<div class="row">
   		<div class="col-md-12" role="main">
+		<!--4Dif (utilisateur_connecte = "")-->
+    			<h1>Veuillez vous connecter.</h1>
+				<button><a href="login.shtml">Connexion</a></button>
+			<!--4Delse-->
     			<h1>MyProject !</h1>
 
     			<table class="table table-bordered">
@@ -37,7 +41,7 @@
     					</td></tr>
 				<!--#4DENDLOOP [Projet]-->
     			</table>
-
+			<!--4DEndIF-->
 		</div>
 	</div>
    </div>

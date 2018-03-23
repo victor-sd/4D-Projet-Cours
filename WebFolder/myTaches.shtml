@@ -26,8 +26,20 @@
   <!--#4DINCLUDE includes/navbar.shtml-->
   	<div class="row">
   		<div class="col-md-12" role="main">
-    			<h1>MyTask !</h1>
-
+			<!--4Dif (utilisateur_connecte = "")-->
+    			<h1>Veuillez vous connecter.</h1>
+				<button><a href="login.shtml">Connexion</a></button>
+			<!--4Delse-->
+			<h1>MyTask !</h1>
+			
+			<button class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AFFICHAGE DES TACHES<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="/4DACTION/loadAllTask">Toutes les tâches</a></li>
+	            <li><a href="/4DACTION/loadUserTask">Mes tâches</a></li>
+	          </ul>
+	        </button>
+			
     			<table class="table table-bordered">
               <th> <h5>Titre</h5> </th>
               <th> <h5>Description</h5> </th>
@@ -36,32 +48,30 @@
               <th> <h5>Projet</h5> </th>
               <th> <h5>Addigné à</h5> </th>
 				<!--#4DLOOP [Tache]-->
-    					<tr>
-                <td>
-                <!--#4DTEXT [Tache]titre-->
-	              </td>
-                <td>
-                <!--#4DTEXT [Tache]description-->
-                </td>
-                <td>
-                <!--#4DTEXT [Tache]date_buttoire -->
-                </td>
-                <td>
-                <!--#4DTEXT [Tache]statut-->
-                </td>
-                <td>
-                <!--#4DSCRIPT/GetNameProject-->
-                <!--#4DTEXT [projet]nom-->
-                </td>
-                <td>
-                  <!--#4DSCRIPT/getUserbyTask-->
-                  <!--#4DTEXT [Utilisateur]nom--> <!--#4DTEXT [Utilisateur]prenom-->
-                </td>
+    					<tr class="ligne_tache" data-id="<!--#4DTEXT [Tache]id-->">
+                <td> <!--#4DTEXT [Tache]titre--></td>
+                <td><!--#4DTEXT [Tache]description--></td>
+                <td><!--#4DTEXT [Tache]date_buttoire --></td>
+                <td><!--#4DTEXT [Tache]statut--></td>
+                <td><!--#4DSCRIPT/GetNameProject--><!--#4DTEXT [projet]nom--></td>
+                <td><!--#4DSCRIPT/getUserbyTask--><!--#4DTEXT [Utilisateur]nom--> <!--#4DTEXT [Utilisateur]prenom--></td>
             </tr>
 				<!--#4DENDLOOP [Tache]-->
     			</table>
-
+			<!--4DENDIF-->
 		</div>
+		
+		<div class = "col-md-4">
+			<form id = "form_tache">
+				ID : <input type="text" id ="task_id" value=""><br>
+				Titre : <input type="text" id ="task_title" value=""><br>
+				% accomplissement : <input type="text" id ="task_PCacc" value=""><br>
+				Description : <input type="text" id ="task_desc" value=""><br>
+				<br>
+				<input type="submit" value="Enregistrer"><br>
+			</form>
+		</div>
+		
 	</div>
    </div>
 
@@ -69,5 +79,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	
+	<script>
+		$(".ligne_tache").click(
+			function(e){
+			tacheID = $(this).data("id");
+				//alert(tacheID)
+				
+				$.ajax(
+					{
+						method:"POST",
+						url:"/4DACTION/ajax_test",
+						data: {tache_id: tacheID}
+					}
+				).done(
+					function(resultat){
+						 //alert(resultat.age_du_capitaine);
+						 $("#task_id").val(resultat.rep_task_id);
+						 $("#task_title").val(resultat.rep_task_title);
+						 $("#task_PCacc").val(resultat.rep_task_PCacc);
+						 $("#task_desc").val(resultat.rep_task_desc)
+						 }
+				);
+				
+			}
+		);
+	</script>
   </body>
 </html>
