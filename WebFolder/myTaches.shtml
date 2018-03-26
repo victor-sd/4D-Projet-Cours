@@ -31,7 +31,7 @@
 				<button><a href="login.shtml">Connexion</a></button>
 			<!--4Delse-->
 			<h1>MyTask !</h1>
-			
+
 			<button class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AFFICHAGE DES TACHES<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
@@ -39,7 +39,7 @@
 	            <li><a href="/4DACTION/loadUserTask">Mes tâches</a></li>
 	          </ul>
 	        </button>
-			
+
     			<table class="table table-bordered">
               <th> <h5>Titre</h5> </th>
               <th> <h5>Description</h5> </th>
@@ -58,9 +58,9 @@
             </tr>
 				<!--#4DENDLOOP [Tache]-->
     			</table>
-			<!--4DENDIF-->
+
 		</div>
-		
+
 		<div class = "col-md-4">
 			<form id = "form_tache">
 				ID : <input type="text" id ="task_id" value=""><br>
@@ -68,10 +68,12 @@
 				% accomplissement : <input type="text" id ="task_PCacc" value=""><br>
 				Description : <input type="text" id ="task_desc" value=""><br>
 				<br>
-				<input type="submit" value="Enregistrer"><br>
+				<input type="submit" id="btn_valid_modif" value="Enregistrer"><br>
 			</form>
 		</div>
-		
+
+    <!--4DENDIF-->
+
 	</div>
    </div>
 
@@ -79,13 +81,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	
+
 	<script>
 		$(".ligne_tache").click(
 			function(e){
 			tacheID = $(this).data("id");
 				//alert(tacheID)
-				
+
 				$.ajax(
 					{
 						method:"POST",
@@ -101,9 +103,39 @@
 						 $("#task_desc").val(resultat.rep_task_desc)
 						 }
 				);
-				
+
 			}
 		);
+
+    $("#btn_valid_modif").click(
+      function(e){
+        tacheID = $("#task_id").val();
+        tacheTitre = $("#task_title").val();
+        tacheDesc = $("#task_desc").val();
+        tacheAccomp = $("#task_PCacc").val();
+        console.log(tacheID);
+        console.log(tacheTitre);
+        console.log(tacheDesc);
+        console.log(tacheAccomp);
+        $.ajax(
+					{
+						method:"POST",
+						url:"/4DACTION/ajax_modifTask",
+						data: {
+              tache_id: tacheID,
+              tache_titre: tacheTitre,
+              tache_desc: tacheDesc,
+              tache_accomp: tacheAccomp
+            }
+					}
+				).done(
+          function (resultat) {
+            alert(resultat.rep);
+          }
+        );
+        return false;
+      }
+    );
 	</script>
   </body>
 </html>
