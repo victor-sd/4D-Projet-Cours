@@ -55,7 +55,7 @@
                 <td><!--#4DTEXT [Tache]statut--></td>
                 <td><!--#4DSCRIPT/GetNameProject--><!--#4DTEXT [projet]nom--></td>
                 <td><!--#4DSCRIPT/getUserbyTask--><!--#4DTEXT [Utilisateur]nom--> <!--#4DTEXT [Utilisateur]prenom--></td>
-            </tr>
+             </tr>
 				<!--#4DENDLOOP [Tache]-->
     			</table>
 
